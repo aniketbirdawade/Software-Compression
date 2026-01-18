@@ -1,0 +1,35 @@
+h1{
+    text-align: center;
+}
+
+
+.slide-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+    gap: 16px;
+    padding: 0 8px;
+}
+
+.slide{
+    width: 100%; 
+    height: auto;
+    max-height: 100vh;
+    object-fit: contain; 
+}
+ .slide img {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    object-fit: contain;
+    display: block;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+.div, .button{
+  text-align: center;
+}
