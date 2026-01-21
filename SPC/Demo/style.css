@@ -1,0 +1,44 @@
+ h1 {
+     background-color: antiquewhite;
+     text-align: center;
+     padding: 10px 0;
+ }
+
+ .slideshow-container {
+     width: 500px;
+     height: 300px;
+     margin: 20px auto;
+     position: relative;
+     overflow: hidden;
+     border: 1px solid #ccc;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ #slideImg {
+     max-width: 100%;
+     max-height: 100%;
+     object-fit: contain;
+ }
+
+ .btn-container {
+     text-align: center;
+     margin-top: 10px;
+ }
+
+ .slide-container {
+     text-align: center;
+     margin-top: 20px;
+ }
+
+ .slide-container img {
+     width: 100px;
+     margin: 5px;
+     cursor: pointer;
+     border: 2px solid transparent;
+ }
+
+ .slide-container img.selected {
+     border-color: blue;
+ }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Slideshow</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+    <input type="file" id="selectImage" multiple accept="image/*"><br><br>
+
+    <div class="slideshow-container">
+        <img id="slideImg" src="">
+    </div>
+
+    <div class="btn-container">
+        <button type="button" onclick="prev()">BACK</button>
+        <button type="button" onclick="startSlideshow()">Start Slideshow</button>
+        <button type="button" onclick="nxt()">NEXT</button>
+    </div>
+
+    <h3 style="text-align:center;">Select images for slideshow:</h3>
+    <div class="slide-container"></div>
+    <script src="index.js"></script>
+</body>
+
+</html>
