@@ -1,90 +1,134 @@
-// Get references to HTML elements
 const imageInput = document.getElementById("imageInput");
 const imageContainer = document.getElementById("imageContainer");
 const countText = document.getElementById("countText");
 const saveBtn = document.getElementById("saveBtn");
 
-// Array to store selected image data (Base64)
+const importJsonBtn = document.getElementById("importJsonBtn");
+const jsonInput = document.getElementById("jsonInput");
+
 let selectedImages = [];
 
-// Trigger when user selects images using file input
+/* ---------------- IMAGE SELECTION FLOW ---------------- */
+
 imageInput.addEventListener("change", function () {
-  // Clear previously shown images
   imageContainer.innerHTML = "";
-
-  // Reset selected images list
   selectedImages = [];
-
-  // Update selected image count
   updateCount();
 
-  // Convert FileList to array
-  const files = Array.from(this.files);
+  Array.from(this.files).forEach(file => {
+  const reader = new FileReader();
 
-  // Loop through each selected file
-  files.forEach((file) => {
-    const reader = new FileReader();
+  reader.onload = e => {
 
-    // When file is successfully read
-    reader.onload = function (e) {
-      // Create image element
-      const img = document.createElement("img");
+    const wrapper = document.createElement("div");
+    wrapper.className = "imgWrapper";
 
-      // Set image source as Base64 data
-      img.src = e.target.result;
+    const img = document.createElement("img");
+    img.src = e.target.result;
 
-      // Toggle select / unselect on image click
-      img.onclick = function () {
-        // If already selected → unselect
-        if (img.classList.contains("selected")) {
-          img.classList.remove("selected");
+    const counter = document.createElement("div");
+    counter.className = "counter";
+    counter.textContent = "0";
 
-          // Remove image from selectedImages array
-          selectedImages = selectedImages.filter(
-            (src) => src !== img.src
-          );
-        } 
-        // If not selected → select
-        else {
-          img.classList.add("selected");
+    const addBtn = document.createElement("button");
+    addBtn.textContent = "+";
+    addBtn.className = "addBtn";
 
-          // Add image to selectedImages array
-          selectedImages.push(img.src);
-        }
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "-";
+    removeBtn.className = "removeBtn";
 
-        // Update count text
-        updateCount();
-      };
+    let count = 0;
 
-      // Add image to the page
-      imageContainer.appendChild(img);
+    addBtn.onclick = () => {
+      count++;
+      counter.textContent = count;
+      selectedImages.push(img.src);
+      updateCount();
     };
 
-    // Read file as Base64 (needed for preview & slideshow)
-    reader.readAsDataURL(file);
-  });
+    removeBtn.onclick = () => {
+      if (count > 0) {
+        count--;
+        counter.textContent = count;
+
+        const index = selectedImages.indexOf(img.src);
+        if (index !== -1) {
+          selectedImages.splice(index, 1);
+        }
+
+        updateCount();
+      }
+    };
+
+    wrapper.appendChild(img);
+    wrapper.appendChild(counter);
+    wrapper.appendChild(addBtn);
+    wrapper.appendChild(removeBtn);
+
+    imageContainer.appendChild(wrapper);
+  };
+
+  reader.readAsDataURL(file);
+});
 });
 
-// Update selected images count text
 function updateCount() {
-  countText.textContent = 
+  countText.textContent =
     `Images selected for slideshow: ${selectedImages.length}`;
 }
 
-// Save Images button click
-saveBtn.onclick = function () {
-  // Prevent proceeding if no images are selected
+saveBtn.onclick = () => {
   if (selectedImages.length === 0) {
     alert("No images selected");
     return;
   }
-
-  // Store selected images in localStorage
-  localStorage.setItem(
-    "selectedImages",
-    JSON.stringify(selectedImages)
-  );
-
-  // Open preview page in a new tab
+  localStorage.setItem("selectedImages", JSON.stringify(selectedImages));
   window.open("preview.html", "_blank");
+};
+
+/* ---------------- IMPORT JSON FLOW ---------------- */
+
+// Trigger hidden file input
+importJsonBtn.onclick = () => {
+  jsonInput.click();
+};
+
+// Handle JSON selection
+jsonInput.onchange = function () {
+  const file = this.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+
+      // BASIC VALIDATION
+      if (!data.images || !Array.isArray(data.images)) {
+        alert("Invalid slideshow JSON file");
+        return;
+      }
+
+      // Restore images (order preserved)
+      const images = data.images
+        .sort((a, b) => a.order - b.order)
+        .map(img => img.src);
+
+      localStorage.setItem("selectedImages", JSON.stringify(images));
+
+      // Restore speed if present
+      if (data.slideSpeed) {
+        localStorage.setItem("slideSpeed", data.slideSpeed);
+      }
+
+      // Go directly to slideshow
+      window.open("slideshow.html", "_blank");
+
+    } catch (err) {
+      alert("Failed to read JSON file");
+    }
+  };
+
+  reader.readAsText(file);
 };

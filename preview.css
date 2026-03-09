@@ -1,54 +1,38 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    text-align: center;
-    position: relative;
-    /* IMPORTANT */
+  font-family: Arial;
+  text-align: center;
+  margin: 20px;
+  position: relative;
 }
 
-h2 {
-    margin-bottom: 20px;
-}
-
-.buttons {
-    margin: 20px 0;
-}
-
-.buttons button {
-    padding: 8px 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background: #f0f0f0;
-    cursor: grab;
-}
-
-#customizeBtn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-/* SAME SIZE AS SLIDESHOW */
 .slideshow-container {
-    width: 800px;        /* same as slideshow */
-    height: 400px;       /* same as slideshow */
-    margin: 20px auto;
-    border: 2px solid #ccc;
-    position: relative;
-    overflow: hidden;
+  width: 800px;
+  height: 400px;
+  border: 2px solid #ccc;
+  margin: 20px auto;
+  overflow-y: auto;
 }
 
-/* Images layout INSIDE slideshow box */
 .image-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 10px;
-    padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  padding: 10px;
 }
 
 .image-grid img {
-    width: 100%;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 5px;
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+  cursor: grab;
+  border: 2px solid transparent;
+}
+
+.image-grid img.dragging {
+  opacity: 0.5;
+  border-color: #007bff;
+}
+
+.buttons button {
+  padding: 8px 16px;
 }
