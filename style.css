@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f7f7;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+/* ---------- IMAGE SELECTION PAGE ---------- */
+
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 15px;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+.image-container img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border: 3px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.image-container img.selected {
+  border-color: #007bff;
+}
+
+/* ---------- SLIDESHOW PAGE ---------- */
+
+.slideshow-container {
+  width: 800px;          /* fixed width */
+  height: 400px;         /* fixed height */
+  margin: 20px auto;
+  border: 2px solid #ccc;
+  background: #000;
+
+  display: flex;         /* center image */
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.slideshow-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* KEY FIX */
+}
+
+/* ---------- BUTTONS ---------- */
+
+.buttons {
+  margin-top: 20px;
+  height: 50px;          /* prevents jumping */
+}
+
+button {
+  padding: 6px 12px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.countBadge{
+  position:absolute;
+  top:5px;
+  right:5px;
+  background:red;
+  color:white;
+  font-size:12px;
+  padding:2px 6px;
+  border-radius:50%;
+}
+
+.imgWrapper {
+  position: relative;
+}
+
+.counter {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: red;
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.addBtn {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  padding: 3px 6px;
+}
+
+.removeBtn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  padding: 3px 6px;
+}
+body{
+font-family: Arial;
+text-align:center;
+margin:20px;
+}
+
+.slideshow-container{
+max-width:800px;
+margin:auto;
+}
+
+.slideshow-container img{
+width:100%;
+height:400px;
+object-fit:contain;
+background:black;
+}
+
+.buttons button{
+padding:8px 16px;
+margin:5px;
+}
