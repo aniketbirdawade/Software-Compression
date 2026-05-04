@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New Slideshow</title>
+
+
+
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+
+  <div class="page-header">
+    <a href="/dashboard" class="back-btn">← Back</a>
+    <h2>Create New Slideshow</h2>
+  </div>
+
+  <div class="section">
+    <h3>Step 1: Select Images</h3>
+    <input type="file" id="imageInput" multiple accept="image/*">
+  </div>
+
+  <div id="imageContainer" class="image-container"></div>
+
+  <p id="countText" class="count-text">Images selected for slideshow: 0</p>
+
+  <div class="section">
+    <button id="saveBtn" class="save-btn"> Save & Continue →</button>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <h3>OR Import Existing JSON</h3>
+    <button id="importJsonBtn" class="import-btn"> Import Slideshow JSON</button>
+    <input type="file" id="jsonInput" accept=".json" hidden>
+  </div>
+
+  <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>

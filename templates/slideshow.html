@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Slideshow</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='slideshow.css') }}">
+</head>
+<body>
+
+  <div class="page-header">
+    <a href="/preview" class="back-btn">← Back</a>
+    <h2>Slideshow</h2>
+  </div>
+
+  <div id="slideshowContainer" class="slideshow-container"></div>
+
+  <div class="controls" id="controls">
+    <button id="prevBtn"> Prev</button>
+    <button id="startBtn"> Start</button>
+    <button id="stopBtn"> Stop</button>
+    <button id="nextBtn">Next </button>
+
+    <label class="speed-label">
+      Speed (sec):
+      <input type="number" id="speedInput" min="0.5" step="0.5">
+    </label>
+    <button id="applySpeedBtn">Apply</button>
+
+    <button id="fullscreenBtn">⛶ Fullscreen</button>
+    <button id="saveJsonBtn"> Save JSON</button>
+  </div>
+
+  <!-- Read from localStorage (set by preview.js) -->
+  <script>
+    // Make images and speed available to slideshow.js
+    window.selectedImages = JSON.parse(localStorage.getItem("selectedImages") || "[]");
+    window.slideSpeed = parseFloat(localStorage.getItem("slideSpeed") || "2");
+    window.buttonPositions = JSON.parse(localStorage.getItem("buttonPositions") || "{}");
+  </script>
+
+  <script src="{{ url_for('static', filename='slideshow.js') }}"></script>
+</body>
+</html>
