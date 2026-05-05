@@ -192,4 +192,4 @@ Example slideshow file:
 
 ## Author
 
-**Aniket Birdawde**
+**Aniket Birdawade**
