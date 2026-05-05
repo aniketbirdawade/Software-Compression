@@ -2,9 +2,6 @@ cd ~/SoftwareCompression/SPC/Demo
 ls
 app.py
 venv
-templates
-static
-images
 source venv/bin/activate
 python3 app.py
 Running on http://127.0.0.1:5000

@@ -1,9 +1,3 @@
-/* slideshow.js
-   Works for both:
-     - /slideshow  (localStorage, from preview)
-     - /run-slideshow (session via window.selectedImages, from dashboard)
-*/
-
 const slideshowContainer = document.getElementById("slideshowContainer");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
