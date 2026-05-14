@@ -2,28 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Preview</title>
-  <link rel="stylesheet" href="/static/preview.css">
+  <title>Preview & Customize</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='preview.css') }}">
 </head>
 <body>
 
-<h2>Preview</h2>
+  <div class="page-header">
+    <a href="/index" class="back-btn">← Back</a>
+    <h2>Preview & Customize</h2>
+  </div>
 
-<button id="customizeBtn">Customize Buttons</button>
+  <p class="hint">Drag images to reorder them.</p>
 
-<div class="slideshow-container">
   <div class="image-grid" id="imageGrid"></div>
-</div>
 
-<div class="buttons" id="dummyButtons">
-  <button id="prevBtn">Previous</button>
-  <button id="startBtn">Start</button>
-  <button id="stopBtn">Stop</button>
-  <button id="nextBtn">Next</button>
-</div>
+  <div class="customize-section">
+    <p class="hint">Customize button positions for the slideshow screen:</p>
+    <button id="customizeBtn" class="action-btn"> Customize Buttons</button>
+  </div>
 
-<button id="readyBtn">Ready For Slideshow</button>
+  <!-- Draggable dummy buttons preview -->
+  <div class="button-preview" id="dummyButtons">
+    <button id="btn-prev" class="dummy-btn">Previous</button>
+    <button id="btn-start" class="dummy-btn">Start</button>
+    <button id="btn-stop" class="dummy-btn">Stop</button>
+    <button id="btn-next" class="dummy-btn">Next</button>
+  </div>
 
-<script src="/static/preview.js"></script>
+  <div class="ready-section">
+    <button id="readyBtn" class="ready-btn">▶ Start Slideshow</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='preview.js') }}"></script>
 </body>
 </html>

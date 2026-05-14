@@ -1,30 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>Slideshow Image Selector</title>
-  <link rel="stylesheet" href="/static/style.css">
+
+  <title>New Slideshow</title>
+
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='index.css') }}"
+  >
 </head>
+
 <body>
 
-<h2>Image Gallary</h2>
+  <!-- HEADER -->
+  <div class="page-header">
 
-<!-- NORMAL IMAGE SELECTION -->
-<input type="file" id="imageInput" multiple accept="image/*">
+    <a href="/dashboard" class="back-btn">
+      ← Back
+    </a>
 
-<div id="imageContainer" class="image-container"></div>
+    <h2>Create New Slideshow</h2>
 
-<p id="countText">Images selected for slideshow: 0</p>
+  </div>
 
-<button id="saveBtn">Save Images</button>
+  <!-- CREATE CATEGORY -->
+  <div class="section">
 
-<hr style="margin: 25px 0;">
+    <h3>Create New Category</h3>
 
-<!-- IMPORT JSON -->
-<h3>OR</h3>
-<button id="importJsonBtn">Import Slideshow JSON</button>
-<input type="file" id="jsonInput" accept=".json" hidden>
+    <input
+      type="text"
+      id="newCategoryInput"
+      placeholder="Enter category name"
+    >
 
-<script src="/static/index.js"></script>
+    <button id="createCategoryBtn">
+      Create Category
+    </button>
+
+  </div>
+
+  <hr>
+
+  <!-- CATEGORY SELECT -->
+  <div class="section">
+
+    <h3>Choose From Saved Gallery</h3>
+
+    <select id="categorySelect">
+
+      <option value="">
+        Select Category
+      </option>
+
+    </select>
+
+  </div>
+
+  <!-- UPLOAD TO CATEGORY -->
+  <div class="section">
+
+    <h3>Upload Images To Selected Category</h3>
+
+    <input
+      type="file"
+      id="galleryUploadInput"
+      multiple
+      accept="image/*"
+    >
+
+    <button id="uploadGalleryBtn">
+      Upload Images
+    </button>
+
+  </div>
+
+  <hr>
+
+  <!-- NORMAL IMAGE SELECT -->
+  <div class="section">
+
+    <h3 id="slideshowSelectTitle">
+      Select Images For Slideshow
+    </h3>
+
+    <input
+      type="file"
+      id="imageInput"
+      multiple
+      accept="image/*"
+    >
+
+  </div>
+
+  <!-- IMAGE GRID -->
+  <div
+    id="imageContainer"
+    class="image-container"
+  ></div>
+
+  <!-- COUNT -->
+  <p
+    id="countText"
+    class="count-text"
+  >
+    Images selected for slideshow: 0
+  </p>
+
+  <!-- SAVE -->
+  <div class="section">
+
+    <button
+      id="saveBtn"
+      class="save-btn"
+    >
+      Save & Continue →
+    </button>
+
+  </div>
+
+  <hr>
+
+  <!-- IMPORT JSON -->
+  <div class="section">
+
+    <h3>OR Import Existing JSON</h3>
+
+    <button
+      id="importJsonBtn"
+      class="import-btn"
+    >
+      Import Slideshow JSON
+    </button>
+
+    <input
+      type="file"
+      id="jsonInput"
+      accept=".json"
+      hidden
+    >
+
+  </div>
+
+  <!-- SCRIPT -->
+  <script
+    src="{{ url_for('static', filename='index.js') }}"
+  ></script>
+
 </body>
+
 </html>

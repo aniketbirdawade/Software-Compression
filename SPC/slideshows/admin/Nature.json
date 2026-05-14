@@ -1,0 +1,21 @@
+{
+  "slideSpeed": 2,
+  "images": [
+    {
+      "order": 0,
+      "src": "/static/gallery/nature/image15.webp"
+    },
+    {
+      "order": 1,
+      "src": "/static/gallery/nature/image18.webp"
+    },
+    {
+      "order": 2,
+      "src": "/static/gallery/nature/image16.webp"
+    },
+    {
+      "order": 3,
+      "src": "/static/gallery/nature/image19.webp"
+    }
+  ]
+}

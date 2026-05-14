@@ -1,0 +1,127 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  background: #f5f5f5;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.sidebar-header h3 {
+  font-size: 15px;
+  color: #222;
+}
+
+.logout-btn {
+  font-size: 12px;
+  color: #555;
+  text-decoration: none;
+  background: #e0e0e0;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.logout-btn:hover { background: #ccc; }
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-bottom: 1px solid #eee;
+}
+.file-item:hover { background: #ececec; }
+
+.file-name {
+  font-size: 13px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #333;
+}
+
+.file-actions { display: flex; gap: 6px; }
+
+.play-btn {
+  background: #222;
+  border: none;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.play-btn:hover { background: #444; }
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #c0392b;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 2px 6px;
+}
+.delete-btn:hover { color: #e74c3c; }
+
+.empty-msg {
+  color: #999;
+  font-size: 13px;
+  padding: 20px 14px;
+}
+
+/* MAIN CONTENT */
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+}
+
+.center-box { text-align: center; color: #333; }
+
+.center-box h2 { font-size: 24px; margin-bottom: 8px; color: #222; }
+.center-box p { color: #777; margin-bottom: 20px; font-size: 14px; }
+
+.create-btn {
+  padding: 12px 28px;
+  font-size: 16px;
+  background: #222;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.create-btn:hover { background: #444; }
+
+.import-section { margin-top: 20px; }
+.import-section p { color: #999; font-size: 13px; margin-bottom: 8px; }
+
+.import-btn {
+  padding: 9px 22px;
+  font-size: 13px;
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.import-btn:hover { background: #e0e0e0; }
